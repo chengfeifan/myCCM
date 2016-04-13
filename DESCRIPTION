@@ -1,0 +1,15 @@
+Package: myCCM
+Type: Package
+Title: calculate CCM
+Version: 0.1.0
+Author: Cheng Feifan <chengff1947@163.com>
+Maintainer: Cheng Feifan <chengff1947@163.com>
+Description: This package is to calculate convergent cross mapping value to
+    judge the causality
+License: Department of chemical engineering, Tsinghua, Beijing
+LazyData: TRUE
+Depends:
+        R (>= 3.2.3)
+Imports:
+        parallel
+RoxygenNote: 5.0.1

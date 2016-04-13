@@ -1,0 +1,26 @@
+reSample<-function(x,y,E,lag,...){
+  xLen<-length(x)
+  if(lag>=0){
+    sampleX<-seq(lag+1,xLen-E,E+1)
+    resampleX<-sample(sampleX)
+    dataX<-unlist(lapply(resampleX,function(tagdot){
+      xdot<-x[seq(tagdot,tagdot+E,1)]
+    }))
+    dataY<-unlist(lapply(resampleX,function(tagdot){
+      ydot<-y[seq(tagdot-lag,tagdot+E-lag,1)]
+    }))
+    return(list(dataX,dataY))
+  }
+  if(lag<0){
+    lag=-lag
+    sampleY<-seq(lag+1,xLen-E,E+1)
+    resampleY<-sample(sampleY)
+    dataY<-unlist(lapply(resampleY,function(tagdot){
+      ydot<-y[seq(tagdot,tagdot+E,1)]
+    }))
+    dataX<-unlist(lapply(resampleY,function(tagdot){
+      xdot<-x[seq(tagdot-lag,tagdot+E-lag,1)]
+    }))
+    return(list(dataX,dataY))
+  }
+}
