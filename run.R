@@ -38,3 +38,33 @@ for(i in (startLocation-lag.max):(startLocation+lag.max)){
 
   ccm<-paraCCMRes(u,th)
 }
+
+multiComputeTE<-function(x,y,lag.max){
+  library(TransferEntropy)
+  startLocation<-1000
+  tag<-1000
+
+  lag<-c((startLocation-lag.max):(startLocation+lag.max))
+  TE<-unlist(lapply(lag,function(i){
+    u<-x[i:(i+tag)]
+    th<-y[startLocation:(startLocation+tag)]
+    TE<-computeTE(u,th,embedding = 3,k=1)
+    return(TE)
+  }))
+  lag<-lag-startLocation
+  return(data.frame(lag,TE))
+}
+
+data("cstr")
+Ca<-cstr$Ci
+Cb<-cstr$Ca
+result<-multiComputeTE(Ca,Cb,lag.max=20)
+library(plotly)
+p<-plot_ly(result,x=lag,y=TE)
+layout(p)
+
+
+testComputeTE<-function(x,y,sampleTimes){
+  library(TransferEntropy)
+
+}
