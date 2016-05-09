@@ -4,7 +4,8 @@
 \alias{paraCCMRes}
 \title{Calculate the CCM Residuals of two sequences}
 \usage{
-paraCCMRes(x, y, maxLag = 20, timestep = 1, tag, E = 2, ...)
+paraCCMRes(x, y, maxLag = 20, timestep = 1, tag = c(1:length(x)), E = 2,
+  ...)
 }
 \arguments{
 \item{x}{A vector represents the time sequence}
