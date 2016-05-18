@@ -137,3 +137,8 @@ b<-testHat$eval.point[[2]][2]-testHat$eval.point[[2]][1]
 c<-testHat$eval.point[[3]][2]-testHat$eval.point[[3]][1]
 (a*b*c*all)
 
+testHat<-kde(iris[,1:2])
+dataresult<-predict(testHat,x=iris[,1:2])
+
+testHat1<-kde(iris[,2:1])
+dataresult1<-predict(testHat1,x=iris[,2:1])
